@@ -189,9 +189,9 @@ export class KnowledgeGraphManager {
     const filteredEntityNames = new Set(filteredEntities.map(e => e.name));
   
     // Filter relations to only include those between filtered entities
-    const filteredRelations = graph.relations.filter(r => 
+    /* const filteredRelations = graph.relations.filter(r => 
       filteredEntityNames.has(r.from) && filteredEntityNames.has(r.to)
-    );
+    ); */
   
     const filteredGraph: KnowledgeGraph = {
       entities: filteredEntities,
