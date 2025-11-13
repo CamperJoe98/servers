@@ -1535,6 +1535,55 @@ python -m mcp_server_git
 
 Follow [these](https://docs.astral.sh/uv/getting-started/installation/) instructions to install `uv` / `uvx` and [these](https://pip.pypa.io/en/stable/installation/) to install `pip`.
 
+### Installing from GitHub (Forks)
+
+If you want to install servers from a fork or a specific branch of this repository, you can use npm with GitHub URLs.
+
+#### Install all servers from this fork:
+```sh
+npm install CamperJoe98/servers
+```
+
+This will install all TypeScript-based servers in the workspace. The binaries will be available in `node_modules/.bin/` with names like `mcp-server-memory`, `mcp-server-filesystem`, etc.
+
+#### Install from a specific branch:
+```sh
+npm install CamperJoe98/servers#branch-name
+```
+
+Replace `branch-name` with the branch you want to install from.
+
+#### Using in Claude Desktop or other MCP clients:
+
+After installing from GitHub, you can reference the servers in your MCP client configuration. For example, in Claude Desktop's configuration:
+
+```json
+{
+  "mcpServers": {
+    "memory": {
+      "command": "node",
+      "args": ["./node_modules/@modelcontextprotocol/server-memory/dist/index.js"]
+    },
+    "filesystem": {
+      "command": "node",
+      "args": ["./node_modules/@modelcontextprotocol/server-filesystem/dist/index.js", "/path/to/allowed/files"]
+    }
+  }
+}
+```
+
+Or if you've installed the package globally or it's in your PATH:
+
+```json
+{
+  "mcpServers": {
+    "memory": {
+      "command": "mcp-server-memory"
+    }
+  }
+}
+```
+
 ### Using an MCP Client
 However, running a server on its own isn't very useful, and should instead be configured into an MCP client. For example, here's the Claude Desktop configuration to use the above server:
 
